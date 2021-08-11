@@ -48,8 +48,13 @@ let timeout = 120000
 
 paginationEmbed(message, pages, buttonList, timeout);
 }
+if (message.content.toLowerCase().startsWith('y!avatar')) {
+    message.reply(message.author.displayAvatarURL({ dynamic: true }));
 })
-client.on("ready", () => {
+}
+client.on("ready", () => 
+  client.user.setActivity("TCOC Event | y!help", 
+  {type: "COMPETING"})
   console.log(`Logged in as ${client.user.tag}!`)
 })
 client.login(process.env.TOKEN)
