@@ -1,6 +1,8 @@
 const Discord = require("discord.js")
 module.exports = {
   name:'server-info',
+  aliases:[],
+  category:'Information',
   description:'Display server information.',
   execute(client,message,args) {
      const serverstatsbed = new Discord.MessageEmbed()

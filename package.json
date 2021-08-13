@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@iamtraction/google-translate": "^1.1.2",
+    "axios": "^0.21.1",
+    "discord.js": "^13.1.0",
+    "discordjs-button-pagination": "^2.0.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "node-superfetch": "^0.2.3",
+    "weather-js": "^2.0.0"
+  }
+}

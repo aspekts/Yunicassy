@@ -4,20 +4,23 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "weather",
+    category:'Statistics',
+    aliases:[],
     description: "shows the current weather in a specified location",
 
-    async run (bot, message, args) {
+    async execute(bot, message, args) {
         weather.find({search: args.join(" "), degreeType: `C`}, function (error, result) {
-            if(error) return message.channel.send(error);
-            if(!args[0]) return message.channel.send('Please specify a location!')
+            if(error) return message.channel.send("**Please mention a location to view the weather in. :thumbsup: **");
+            if(!args[0]) return message.channel.send('**Please specify a location!**')
 
-            if(result === undefined || result.length === 0) return message.channel.send('**invlaid** location!!')
+            if(result === undefined || result.length === 0) return message.channel.send('**Invalid Location! Please enter another city!**')
+             
 
             var current = result[0].current;
             var location = result[0].location;
 
             const weatherbed = new Discord.MessageEmbed()
-            .setColor(0x111111)
+            .setColor("#FFFE6B")
             .setAuthor(`Weather forecast for ${current.observationpoint}`)
             .setThumbnail(current.imageUrl)
             .setDescription(`**${current.skytext}**`)

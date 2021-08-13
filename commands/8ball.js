@@ -1,6 +1,11 @@
 const Discord = require('discord.js');
 
-module.exports.execute = async (client, message, args) =>  {
+module.exports = {
+  name:'8ball',
+  category:'Fun',
+  aliases:['8b'],
+  description:'Have your questions answered by the magic 8ball!',
+ async execute(client, message, args) {
   const answers = [
     'Yes',
     'No',
@@ -8,7 +13,7 @@ module.exports.execute = async (client, message, args) =>  {
     'Go Again', 
     'Most Likely',
     'Less Likely',
-    'Image asking that, it is a most certain']
+    'Imagine asking that, it is a most certain']
     
     let randomValue = answers[Math.floor(Math.random() * answers.length)];
     
@@ -19,9 +24,5 @@ module.exports.execute = async (client, message, args) =>  {
       .setThumbnail('https://www.newagestore.com/wp-content/plugins/magic-answers/images/ball.png')
       .setTimestamp()
     message.channel.send({embeds:[ballembed]})
-}
-
-module.exports.help = {
-  name: '8ball',
-  aliases: ['8b']
+  }
 }

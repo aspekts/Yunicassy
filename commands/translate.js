@@ -1,9 +1,12 @@
 const translate = require('@iamtraction/google-translate');
 const Discord = require('discord.js');
-const prefix = ("y!")
 
-module.exports.execute = async (client, message, args) =>  {
-  if(!message.content.startsWith(prefix)) return
+module.exports = {
+  name:"translate",
+  category:'Fun',
+  aliases:[],
+  description:"Translate text from any language, to any language!",
+  async execute(client, message, args) {
   
   const txt = args.slice(1).join(" ")
   const lang = args[0]
@@ -25,10 +28,7 @@ module.exports.execute = async (client, message, args) =>  {
    message.channel.send({embeds:[translateerrorbed]}) 
 });
 
+  }
 }
  
 
-module.exports.help = {
-  name: 'translate',
-  aliases: []
-}

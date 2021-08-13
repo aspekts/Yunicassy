@@ -1,0 +1,113 @@
+const Discord = require('discord.js')
+const Levels = require("discord-xp");
+const canvacord = require("canvacord");
+
+
+module.exports = {
+  name:'rank',
+  aliases:['level'],
+  description:'see your rank',
+  category:'Leveling',
+
+async execute(client, message, args) {
+  const target = message.author;
+
+  const user = await Levels.fetch(target.id, message.guild.id);
+
+  const neededXp = Levels.xpFor(parseInt(user.level) + 3);
+
+  if(!user) return message.channel.send("**You currently have no XP. Send some messages to get some! :smile: **");
+
+  const rankcard = new canvacord.Rank()
+   .setAvatar(message.author.displayAvatarURL({ dynamic: true, format: 'png'}))
+   .setCurrentXP(user.xp)
+   setRequiredXP(neededXP)
+   .setStatus(message.member.presence.status)
+   .setProgressBar('#FFA500', "COLOR")
+   .setDiscriminator('0001') 
+   .setUsername(message.author.username)
+rank.build()
+   .then(data => {
+     const levelattachment = new Discord.MessageAttachment(data, 'funny.png')
+     message.channel.send({attachments:[levelattachment]});
+   })
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const fetch = require('node-fetch');
+
+const Discord = require('discord.js');
+
+module.exports = {
+    name: "covid",
+    catagory: "Statistics",
+    description: "Track a country or worldwide COVID-19 cases",
+
+    async execute (client, message, args){
+
+        let countries = args.join(" ");
+
+
+        const noArgs = new Discord.MessageEmbed()
+        .setTitle('Missing Country...')
+        .setColor("#AF8181")
+        .setDescription('You are missing the identifier after the "y!covid" (ex: y!covid all || y!covid USA)')
+        .setTimestamp()
+
+        if(!args[0]) return message.channel.send({embeds:[noArgs]});
+
+        if(args[0] === "all"){
+            fetch(`https://covid19.mathdro.id/api`)
+            .then(response => response.json())
+            .then(data => {
+                let confirmed = data.confirmed.value.toLocaleString()
+                let recovered = data.recovered.value.toLocaleString()
+                let deaths = data.deaths.value.toLocaleString()
+
+                const worldcovidbed = new Discord.MessageEmbed()
+                .setTitle(`Worldwide COVID-19 Stats `)
+                .setThumbnail("https://cms.accuweather.com/wp-content/uploads/2020/03/CoronavirusAnimation2.gif")
+                .addField('Confirmed Cases', confirmed)
+                .addField('Recovered', recovered)
+                .addField('Deaths', deaths)
+                .setTimestamp()
+                .setColor("#AF8181")
+
+                message.channel.send({embeds:[worldcovidbed]});
+            })
+        } else {
+            fetch(`https://covid19.mathdro.id/api/countries/${countries}`)
+            .then(response => response.json())
+            .then(data => {
+                let confirmed = data.confirmed.value.toLocaleString()
+                let recovered = data.recovered.value.toLocaleString()
+                let deaths = data.deaths.value.toLocaleString()
+
+                const countrybed = new Discord.MessageEmbed()
+                .setTitle(`COVID-19 Statistics for **${countries}**`)
+                .setThumbnail("https://cdn.discordapp.com/attachments/873580831803846720/875811056637861938/covidpic-removebg-preview.png")
+                .addField('Confirmed Cases', confirmed)
+                .addField('Recovered', recovered)
+                .addField('Deaths', deaths)
+
+                message.channel.send({embeds:[countrybed]})
+            }).catch(e => {
+                return message.channel.send('The country provided does not exist! :open_mouth: ')
+            })
+        }
+    }
+}

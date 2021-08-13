@@ -1,4 +1,9 @@
-module.exports.execute = async (client, message, args) =>  {
+module.exports = {
+  name:'slowmode',
+  description:'Set the slowmode for a channel',
+  category:'Moderation',
+  aliases:['sm'],
+  async execute(client, message, args) {
 		if (!args[0]) {
       return message.channel.send(`Slowmode is at: ${message.channel.rateLimitPerUser} seconds!`)
     }
@@ -19,7 +24,4 @@ module.exports.execute = async (client, message, args) =>  {
 		message.channel.send(`Slowmode set to ${setTimeto}s`);
 	}
 	
-	module.exports.help = {
-  name: 'slowmode',
-  aliases: ['sm']
 }
