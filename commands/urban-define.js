@@ -3,7 +3,10 @@ const axios = require('axios');
 
 module.exports = {
   name: "urban",
-  catagory: "Information",
+  aliases:[],
+  description:'Get the urban definition for a word of your choosing!',
+  category: "Information",
+  usage: 'urban-define [word]',
   async execute(client, message, args){
     let search = args.join(" ");
     if(!search) return message.reply(':no_entry_sign:  Make sure to mention a word to define.');

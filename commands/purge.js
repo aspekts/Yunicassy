@@ -1,10 +1,14 @@
-const Discord = require("discord.js")
+const { Permissions } = require("discord.js")
 
 module.exports = {
-    commands: ['del', 'purge'], 
-    catagory: 'Moderation',
+    aliases: ['del', 'purge'], 
+    category: 'Moderation',
+    usage: 'purge [Amount of messages]',
     description: 'Deletes Message', 
     async execute(client, message, args) {
+       if(!member.permissions.has(Permissions.FLAGS.MANGE_MESSAGES)) {
+      message.reply("You do not have permissions to change the prefix. Please contact a moderator or developer to do so.")
+    }
         const amount = parseInt(args[0]) + 1;
 
         if (isNaN(amount)) {

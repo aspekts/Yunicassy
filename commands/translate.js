@@ -5,6 +5,7 @@ module.exports = {
   name:"translate",
   category:'Fun',
   aliases:[],
+  usage: 'translate [language to translate to] [text]',
   description:"Translate text from any language, to any language!",
   async execute(client, message, args) {
   

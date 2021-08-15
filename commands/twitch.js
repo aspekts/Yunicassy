@@ -3,7 +3,9 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   name: 'twitch',
-  description: 'pog',
+  aliases:[],
+  description: 'Find stream information for a certain user on twitch',
+  usage: 'twitch [streamer]',
   catagory: 'Statistics',
  async execute(client, message, args) {
     const twitch = new TwitchApi({

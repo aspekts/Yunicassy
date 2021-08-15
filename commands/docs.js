@@ -1,7 +1,9 @@
 const fetch = require('node-fetch')
 module.exports = {
     name: "docs",
-    catagory: "Information",
+    aliases:['djs'],
+    usage:'docs [query]',
+    category: "Information",
     description: "Search the d.js docs for something!",
      async execute(client, message, args) {
         const query = args.join(" ")

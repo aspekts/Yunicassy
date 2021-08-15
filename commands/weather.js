@@ -6,6 +6,7 @@ module.exports = {
     name: "weather",
     category:'Statistics',
     aliases:[],
+    usage: 'weather [State/Country]',
     description: "shows the current weather in a specified location",
 
     async execute(client, message, args) {

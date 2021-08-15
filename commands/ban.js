@@ -1,19 +1,13 @@
-const { MessageEmbed,Permissions } = require('discord.js');
+const { MessageEmbed, Permissions } = require('discord.js');
 
 module.exports = {
     name: 'ban', 
-    description: 'Bans A User.', 
-    catagory: 'Moderation',
-    usage: 'ban @User', 
+    description: 'Bans A User', 
+    category: 'Moderation',
+    aliases:[],
+    usage: 'ban [@User]', 
 
     async execute(client, message, args)  {
-
-      if (!message.member.permissions.has([Permissions.FLAGS.KICK_MEMBERS, Permissions.FLAGS.BAN_MEMBERS])) {
-        message.reply("You do not have permissions to run this action!")
-      }
-      if (permissions.has([Permissions.FLAGS.KICK_MEMBERS, Permissions.FLAGS.BAN_MEMBERS])) {
-                message.reply("I do not have permissions to run this action!")
-      }
         const member = message.mentions.members.first()
         if(!member) return message.channel.send('**:no_entry_sign: Make sure to mention a member you want to ban.**');
         if(member.id == client.user.id) return message.reply("I can't ban myself!");

@@ -1,8 +1,9 @@
 const { MessageEmbed } = require('discord.js'); 
-
 module.exports = {
   name: 'user-info',
-  description: 'Test',
+  aliases:['user'],
+  description: 'Get information from a user in a guild.',
+  usage: 'user-info [user]',
   catagory: 'Statistics',
   async execute(client, message, args) {
     
@@ -49,7 +50,7 @@ module.exports = {
      .addField(`**ID: **`, `${mentionedMember.id}`) 
      .addField(`**Status: **`, `${status}`) 
      .addField(`**Game: **`, `${game || 'None'}`) 
-     .addField(`**Account Created At: **`, `${moment(mentionedMember.createdAt).format("DD-MM-YYYY [at] HH:mm")}`) 
+     .addField(`**Account Created At: **`, `${mentionedMember.createdAt}`) 
      .addField(`**Joined The Server At: **`, `${mentionedMember.joinedAt}`) 
      .addField(`**Roles: [${roles.length}]**`, `${displayRoles}`) 
     message.channel.send({embeds:[userEmbed]}) 

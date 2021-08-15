@@ -1,18 +1,11 @@
-const discord = require('discord.js');
 
-module.exports.run = async (Client, message, args, prefix) => {
-
-  if(!message.content.startsWith(prefix)) return;
-
-
-    // the perm. that the member need it to ban someone
-    if(!message.member.hasPermission('KICK_MEMBERS', 'ADMINISTRATOR'))
-    // if someone dont hv perm it will send this message
-    message.channel.send("You don't have permission to use that command.");
-
-    else {
-      if (!message.guild) return;
-  
+module.exports = {
+  name: 'kick',
+  aliases:[],
+  description: 'Kick a user from a guild',
+  usage:'kick [@user]',
+  category: 'Moderation',
+  async execute(client, message, args) {
       const user = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
   
       if (user) {
@@ -47,5 +40,5 @@ module.exports.run = async (Client, message, args, prefix) => {
        
         message.reply("You didn't mention the user to kick!");
       }
-  };
+  }
 }

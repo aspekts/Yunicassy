@@ -3,8 +3,10 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   name: 'eval',
-  description: '',
-  catagory: 'Moderation',
+  description: 'Evaluate code. Devs Only',
+  usage:'eval [code]',
+  aliases: ['e'],
+  category: 'Core',
   execute(client, message, args) {
     const devs = ['767998856348565505','294870523438170112','832341911795925073'];
     const content = args.join(' ')

@@ -3,6 +3,9 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'corona',
+  aliases:['covid'],
+  description:'Get covid stats from each country',
+  usage:'corona [country]',
 	category: 'Statistics',
 	async execute(client, message, args)  {
 		const baseUrl = 'https://corona.lmao.ninja/v2';

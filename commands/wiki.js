@@ -5,11 +5,11 @@ module.exports = {
     name: "wiki",
     category:'Information' ,
     aliases:[],
+    usage: 'wiki [text]',
     description: 'Search Any Thing On Wikipedia.',
-    usage:'wiki',
-  async execute(client, message) {
+  async execute(client, message, args) {
 
-        const wiki = args.slice().join(' ')
+        const wiki = args.join(' ')
         if(!wiki) return message.reply('**:mag_right:  Provide a Wiki page to Search.**') 
         const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wiki)}` 
 

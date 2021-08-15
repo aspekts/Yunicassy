@@ -2,7 +2,7 @@ const fetch = require("node-fetch")
 const { MessageEmbed } = require("discord.js")
 module.exports = {
   name:'time',
-  description:'Get the current time and UTC offset for a certain location',
+  description:'Get the current time and UTC offset for a certain location.',
   aliases:[],
   usage:'time [region/area]',
   category:'Statistics',

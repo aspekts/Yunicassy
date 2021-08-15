@@ -3,6 +3,7 @@ const { Discord } = require('discord.js')
 module.exports = {
     name: "nickname",
     description: "Changes a user nickname!",
+    usage: 'nickname <user> [nickname]',
     category: "Moderation",
     aliases: ['nick'],
      async execute (client, message, args){

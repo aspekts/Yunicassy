@@ -1,8 +1,9 @@
 const Discord = require("discord.js")
 module.exports = {
   name:'ping',
-  category:'Moderation',
+  category:'Information',
   aliases:[],
+  usage: 'ping',
   description:'Display the latency of the bot',
  execute(client, message, args) {
 const pingbed = new Discord.MessageEmbed()

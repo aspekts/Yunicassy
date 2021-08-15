@@ -2,6 +2,7 @@ module.exports = {
   name:'slowmode',
   description:'Set the slowmode for a channel',
   category:'Moderation',
+  usage: 'slowmode [number]',
   aliases:['sm'],
   async execute(client, message, args) {
 		if (!args[0]) {

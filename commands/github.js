@@ -3,7 +3,8 @@ const fetch = require('node-fetch')
 
 module.exports = {
     name:'github',
-    aliases: [ 'gh'],
+    aliases: ['gh'],
+    usage:'github [user]',
     category:'Information',
     description: 'Shows Info About Serched User',
 

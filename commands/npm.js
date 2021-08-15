@@ -3,7 +3,9 @@ const fetch = require('node-fetch')
 
 module.exports = {
     name: 'npm',
-    catagory: "Information",
+    category: "Information",
+    aliases:[],
+    usage: 'npm [package]',
     description: 'Shows Info About Searched NPM Package',
 
     async execute(client, message, args)  {

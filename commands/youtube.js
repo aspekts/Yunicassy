@@ -1,10 +1,12 @@
- const { MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const fetch = require('node-superfetch');
 
 
 module.exports = {
   name: 'youtube',
-  description: '',
+  description: 'Get Channel information for a Youtuber of your choosing!',
+  aliases:[],
+  usage: 'youtube [Youtuber]',
   catagory: 'Statistics',
  async execute(client,message,args) {
 
@@ -25,17 +27,16 @@ module.exports = {
         
             const youtubestatsbed = new MessageEmbed()
             .setColor("#FF0000")
-            .setTitle('Youtube Stats for', `[${channel.body.items[0].snippet.channelTitle}](https://www.youtube.com/channel/${channel.body.items[0].id.channelId})`)
+            .setTitle(`${channel.body.items[0].snippet.channelTitle}`)
+            .setURL(`https://youtube.com/channel/${channel.body.items[0].id.channelId}`)
             .setThumbnail(channel.body.items[0].snippet.thumbnails.high.url)
             .setTimestamp(new Date())
             .addFields(
-             { name:"Channel Name", value:channel.body.items[0].snippet.channelTitle, inline: true },
-            {name: "Channel Description", value: channel.body.items[0].snippet.description, inline: true},
             {name: "Subscribers Count", value: parseInt(data.body.items[0].statistics.subscriberCount).toLocaleString(), inline: true},
             {name: "Total Views", value: parseInt(data.body.items[0].statistics.viewCount).toLocaleString(),inline: true},
             {name: "Total Video(s)", value: parseInt(data.body.items[0].statistics.videoCount).toLocaleString(), inline: true},
+            {name: "Channel Description", value: channel.body.items[0].snippet.description, inline: true},
             {name:"Date Created", value: new Date(channel.body.items[0].snippet.publishedAt).toDateString(), inline: true},
-           {name:"Link", value:`[${channel.body.items[0].snippet.channelTitle}](https://www.youtube.com/channel/${channel.body.items[0].id.channelId})`,inline: true},
             {name: "Country", value: data.body.items[0].snippet.country ? `${data.body.items[0].snippet.country}`  : "No Country Provided", inline: true}
             )
              message.channel.send({embeds:[youtubestatsbed]})

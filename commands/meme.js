@@ -4,8 +4,10 @@ const url = 'https://www.reddit.com/r/meme/hot/.json?limit=100'
 
 module.exports = {
     name: 'meme',
-    catagory: "Fun",
-    description: 'sends meme',
+    aliases:[],
+    category: "Fun",
+    usage: 'meme',
+    description: 'Get those spicy memes, fresh from reddit!',
     async execute(client, message, args) {
 	const embed = new MessageEmbed();
 	got('https://www.reddit.com/r/memes/random/.json')

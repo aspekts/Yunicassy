@@ -2,8 +2,10 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
   name: 'poll',
-  description: '',
-  catagory: 'Information',
+  description: 'Create a poll for your server!',
+  usage: 'poll [message]',
+  aliases:[],
+  category: 'Information',
   execute(client, message, args) {
     const question = args.join(' ');
     if(!args) return message.channel.send('please send a message for the poll!')
