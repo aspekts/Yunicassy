@@ -8,17 +8,18 @@ const ints = new Intents([
   Intents.FLAGS.GUILD_VOICE_STATES,
   Intents.FLAGS.DIRECT_MESSAGES
 ])
-const { prefix } = require('./config.json')
+const db = require('quick.db');
+const config = require('./config.json')
 const client = new Client({intents:ints});
-client.prefix = prefix
-client.ss = {}
-client.rps = {}
 const fs = require('fs')
 const express = require('express');
 const app = express();
 const port = 3000;
 app.get('/', (req, res) => res.send('Hello'));
-app.listen(port, () => console.log(`Yunicassy listening at http://localhost::${port}`));
+app.listen(port, () => console.log(`Yunicassy listening at http://localhost:${port}`));
+client.db = db
+client.config = config
+client.ss = {}
 client.commands = new Collection();
 client.aliases = new Collection()
 fs.readdir("./events/", (err, files) => {

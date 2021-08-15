@@ -1,8 +1,9 @@
-const { MessageEmbed } = require("discord.js")
+const { MessageEmbed } = require("discord.js");
 module.exports = (client, message) => {
-    // Ignore all bots
+   // Ignore all bots
   if (message.author.bot) return;
   
+  client.prefix = client.db.fetch(`prefix_${message.guild.id}`) ? client.db.fetch(`prefix_${message.guild.id}`) : client.config.prefix;
  // Ignore messages not starting with the prefix (in config.json)
   if (message.content.indexOf(client.prefix) !== 0) return;
 

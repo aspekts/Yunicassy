@@ -4,8 +4,10 @@ const fetch = require('node-fetch')
 module.exports = {
     name: "wiki",
     category:'Information' ,
-    description: 'Search Any Thing On Wikipedia.', 
-    async execute(client, message, args) {
+    aliases:[],
+    description: 'Search Any Thing On Wikipedia.',
+    usage:'wiki',
+  async execute(client, message) {
 
         const wiki = args.slice().join(' ')
         if(!wiki) return message.reply('**:mag_right:  Provide a Wiki page to Search.**') 
@@ -24,6 +26,7 @@ module.exports = {
                 const wikimorebed = new MessageEmbed()
                 .setColor('GREY')
                 .setTitle(response.title)
+                .setTimestamp()
                 .setURL(response.content_urls.desktop.page)
                 .setDescription([`
                 ${response.extract}

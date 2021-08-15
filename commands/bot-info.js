@@ -17,7 +17,7 @@ module.exports = {
         **Users:** ${client.users.cache.size} 
         **Discord.js Version:** ${Discord.version}
         **Node.js Version:** ${process.version}
-        
+        **General Information**
          **Username:** ${client.user.username}
          **Tag:** ${client.user.tag}
          **ID:** ${client.user.id}

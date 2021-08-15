@@ -16,8 +16,11 @@ module.exports = {
     
      collector.on('collect', message => {
        message.channel.send('Check your dms')
-	   user.send('What do you pick? Rock Paper Or Scissors')
-	   component.send('What do you pick? Rock Paper Or Scissors');
+       
+       //here
+       
+       
+       
      });
      collector.on('end',  message => {
        console.log('ends')

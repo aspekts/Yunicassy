@@ -1,13 +1,14 @@
-	const got = require("got")
-  const Discord = require('discord.js');
-  module.exports ={
-    name:'meme',
-    aliases:[],
+const got = require('got');
+const { MessageEmbed } = require('discord.js');
+const url = 'https://www.reddit.com/r/meme/hot/.json?limit=100'
+
+module.exports = {
+    name: 'meme',
     catagory: "Fun",
-    description:'Send some memes!',
-  async execute(client, message, args) {
-  
-  got('https://www.reddit.com/r/memes/random/.json')
+    description: 'sends meme',
+    async execute(client, message, args) {
+	const embed = new MessageEmbed();
+	got('https://www.reddit.com/r/memes/random/.json')
 		.then(response => {
 			const [list] = JSON.parse(response.body);
 			const [post] = list.data.children;
@@ -19,17 +20,16 @@
 			const memeUpvotes = post.data.ups;
       const memeAuthor = post.data.author;
 			const memeNumComments = post.data.num_comments;
-      const memebed = new Discord.MessageEmbed()
       embed.setAuthor(`Author: u/${memeAuthor}`);
 			embed.setTitle(`${memeTitle}`);
 			embed.setURL(`${memeUrl}`);
-			embed.setColor('RANDOM');
+			embed.setColor('#FF7400');
 			embed.setImage(memeImage);
+      embed.setThumbnail('https://logodownload.org/wp-content/uploads/2018/02/reddit-logo-16.png');
 			embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
 
-			message.channel.send({embeds:[memebed]});
+			message.channel.send({embeds:[embed]});
 		})
 		.catch(console.error);
-
-  }
+}
 }

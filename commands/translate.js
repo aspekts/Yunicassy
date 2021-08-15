@@ -9,11 +9,11 @@ module.exports = {
   async execute(client, message, args) {
   
   const txt = args.slice(1).join(" ")
-  const lang = args[0]
-  if(!lang) return message.reply(`${message.author}, **no language was mentioned. Please try again.**`)
+  const language = args[0]
+  if(!language) return message.reply(`${message.author}, **no language was mentioned. Please try again.**`)
   if(!txt) return message.reply(`${message.author}, **Please provide a text to translate**`)
 
-  translate(txt, { to: lang }).then(res => {
+  translate(txt, { to: language }).then(res => {
     const translatebed = new Discord.MessageEmbed()
      .setColor("#63B6FF")
      .setAuthor("Translated Result")
