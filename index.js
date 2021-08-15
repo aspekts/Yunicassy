@@ -8,6 +8,7 @@ const ints = new Intents([
   Intents.FLAGS.GUILD_VOICE_STATES,
   Intents.FLAGS.DIRECT_MESSAGES
 ])
+require("dotenv").config()
 const db = require('quick.db');
 const config = require('./config.json')
 const client = new Client({intents:ints});
